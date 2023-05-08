@@ -1,0 +1,15 @@
+---
+ name: FR
+ description: Euro game about FR
+ authors:
+   - Keenan
+   - Cameron
+   - Rohith
+ resources:
+   - https://github.com/Alkallabeth/EuroProject/blob/main/script.js
+   - https://github.com/Alkallabeth/EuroProject/blob/main/index.html
+   - https://github.com/Alkallabeth/EuroProject/blob/main/style.css
+ normalize_css: no
+ load_type: d
+ ...
+ 
