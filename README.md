@@ -4,6 +4,7 @@
 * The theme is the French Revolution (1789 - 1799)
 * [Running document](https://docs.google.com/document/d/1tL0n1LpgVcL-f9zDoNwD9ST8ar9DLWaA2urSR2OfHf0/edit)
 * [Up to date testing](https://codehs.com/sandbox/farrellyk958carlsbadusdnet/euro-project)
+* [Collaborate on the testing](https://codehs.com/sandbox/farrellyk958carlsbadusdnet/euro-project?filepath=index.html&collaborate=-NV13LNHp_wo0dEWGfeu)
 ***
 ### Coding Standards
 * Code MUST BE READABLE, use lots of spaces, lines, and comments
