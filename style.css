@@ -1,19 +1,69 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Franklin&display=swap');
 
-.libre-franklin{
-    font-family: Libre Franklin;
-}
-
 body{
     overflow: hidden;
 }
-
+.libre-franklin{
+    font-family: Libre Franklin;
+}
 #start-screen{
     height: 100vh;
     width: 100vw;
     position: absolute;
-    left: 12.5px;
+    left: 12px;
     top: 0px;
     background-image: url("https://media.istockphoto.com/id/1369337114/vector/france-flag-flag-illustration.jpg?s=612x612&w=0&k=20&c=ibpaq2tnkYL5D-MDaBR9HSKzwzQplrwbR1GONThTWgI=");
     background-size: 100vw 100vh;
+}
+#rules-screen{
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    left: 12px;
+    top: 0px;
+    background-image: url("https://static.vecteezy.com/system/resources/previews/005/714/078/large_2x/old-paper-texture-background-free-photo.jpg");
+    background-size: 100vw 100vh;
+}
+td{
+    height: 5vw;
+    width: 5vw;
+    text-align: center;
+}
+.space-start{
+    background: green;
+    color: white;
+}
+.space-start::before{
+    content: "Start";
+}
+.space-popularity-gain{
+    background: lightgreen;
+}
+.space-popularity-gain::before{
+    content: "+1 P";
+}
+.space-popularity-lose{
+    background: pink;
+}
+.space-popularity-lose::before{
+    content: "-1 P";
+}
+.space-task{
+    background: orange;
+}
+.space-task::before{
+    content: "?";
+}
+.space-wheel{
+    background-image: url("https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/1684496/crowd-clipart-md.png");
+    background-size: cover;
+}
+.space-event{
+    background-size: cover;
+}
+.space-event-liberal-one{
+    background-image: url("https://cdn.britannica.com/35/182635-050-43342CDA/Tennis-Court-Oath-Jacques-Louis-David-Louvre-Paris-1791.jpg");
+}
+.space-event-liberal-two{
+    background-image: url("https://cdn.britannica.com/98/90498-050-5527D0C1/prison-event-Bastille-French-Revolution-engraving-July-14-1789.jpg");
 }
