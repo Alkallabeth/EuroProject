@@ -2,10 +2,12 @@
 ### Basics
 * Our AP European History board game project, due Wednesday May 24th
 * The theme is the French Revolution (1789 - 1799)
+### Documents
 * [Running document](https://docs.google.com/document/d/1tL0n1LpgVcL-f9zDoNwD9ST8ar9DLWaA2urSR2OfHf0/edit)
 * [Up to date testing](https://codehs.com/sandbox/farrellyk958carlsbadusdnet/euro-project)
 * [Collaborate on the testing](https://codehs.com/sandbox/farrellyk958carlsbadusdnet/euro-project?filepath=index.html&collaborate=-NV13LNHp_wo0dEWGfeu)
 * [Character List](https://docs.google.com/document/d/1521H2Z9DEhB6DWuJIAbrzNGjMGIkJUKgRRajsLPZtwE/edit?usp=sharing)
+* [Country Maps](https://docs.google.com/document/d/1XpBZ26uPh2eE4NzcoABDKbr2H-4O-NaL9guoSDfKov4/edit)
 ***
 ### Coding Standards
 * Code MUST BE READABLE, use lots of spaces, lines, and comments
