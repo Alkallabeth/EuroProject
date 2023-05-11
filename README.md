@@ -2,6 +2,7 @@
 ### Basics
 * Our AP European History board game project, due Wednesday May 24th
 * The theme is the French Revolution (1789 - 1799)
+***
 ### Documents
 * [Running document](https://docs.google.com/document/d/1tL0n1LpgVcL-f9zDoNwD9ST8ar9DLWaA2urSR2OfHf0/edit)
 * [Up to date testing](https://codehs.com/sandbox/farrellyk958carlsbadusdnet/euro-project)
