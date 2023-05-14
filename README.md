@@ -10,10 +10,8 @@
 * [Character List](https://docs.google.com/document/d/1521H2Z9DEhB6DWuJIAbrzNGjMGIkJUKgRRajsLPZtwE/edit?usp=sharing)
 * [Country Maps](https://docs.google.com/document/d/1XpBZ26uPh2eE4NzcoABDKbr2H-4O-NaL9guoSDfKov4/edit)
 ***
-### Coding Standards
-* Code MUST BE READABLE, use lots of spaces, lines, and comments
-* Commits must have detail of what was added/removed/modified
-***
+### FOR ANNOUNCER AUDIO
+Go to [https://fakeyou.com/tts](https://fakeyou.com/tts) and select the voice "Greg Hamilton V2". Then, type in the name and download.
 ### How the game works
 * An even number of players, divided into 2 teams: Girondins and Mountains/Jacobins, each player represents a historical figure (Robespierre, Olympe de Gouges, Georges Danton, etc.)
 * During the first (liberal) phase, players will work together to advance through events (Tennis Court Oath, Storming of the Bastille, Women's March on Versailles, etc.)
