@@ -12,6 +12,7 @@
 ***
 ### FOR ANNOUNCER AUDIO
 Go to [https://fakeyou.com/tts](https://fakeyou.com/tts) and select the voice "Greg Hamilton V2". Then, type in the name and download.
+***
 ### How the game works
 * An even number of players, divided into 2 teams: Girondins and Mountains/Jacobins, each player represents a historical figure (Robespierre, Olympe de Gouges, Georges Danton, etc.)
 * During the first (liberal) phase, players will work together to advance through events (Tennis Court Oath, Storming of the Bastille, Women's March on Versailles, etc.)
