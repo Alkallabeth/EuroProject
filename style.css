@@ -12,7 +12,7 @@ body{
     position: absolute;
     left: 12px;
     top: 0px;
-    background-image: url("https://media.istockphoto.com/id/1369337114/vector/france-flag-flag-illustration.jpg?s=612x612&w=0&k=20&c=ibpaq2tnkYL5D-MDaBR9HSKzwzQplrwbR1GONThTWgI=");
+    background-image: url("./assets/images/backgrounds/start_screen.jpg");
     background-size: 100vw 100vh;
 }
 #rules-screen{
@@ -21,8 +21,43 @@ body{
     position: absolute;
     left: 12px;
     top: 0px;
-    background-image: url("https://static.vecteezy.com/system/resources/previews/005/714/078/large_2x/old-paper-texture-background-free-photo.jpg");
+    background-image: url("./assets/images/backgrounds/rules-screen.jpg");
     background-size: 100vw 100vh;
+}
+#gameboard-screen{
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0px;
+    background: url("./assets/images/backgrounds/game-screen.jpg");
+    background-size: 100vw 100vh;
+}
+#gameboard{
+    position: relative;
+    top: 1.25px;
+    left: 12px;
+}
+#shadow-screen{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100vh;
+    width: 100vw;
+    z-index: 0;
+    background: rgba(51,51,51,0.5);
+}
+#shadow-screen > center > div{
+    width: fit-content;
+    height: fit-content;
+    position: relative;
+    top: 5vw;
+    max-height: 80vh;
+    overflow: scroll;
+}
+#finish-screen{
+    background: url("./assets/images/backgrounds/finish-screen.jpeg");
+    background-size: cover;
+    height: 100vh;
 }
 td{
     height: 5vw;
@@ -32,38 +67,178 @@ td{
 .space-start{
     background: green;
     color: white;
+    border: 1px solid black;
 }
 .space-start::before{
     content: "Start";
 }
 .space-popularity-gain{
-    background: lightgreen;
+    background: #65aa65;
+    border: 1px solid black;
 }
 .space-popularity-gain::before{
     content: "+1 P";
 }
 .space-popularity-lose{
-    background: pink;
+    background: #cf9ba4;
+    border: 1px solid black;
 }
 .space-popularity-lose::before{
     content: "-1 P";
 }
 .space-task{
-    background: orange;
+    background: #c78100;
+    border: 1px solid black;
 }
 .space-task::before{
     content: "?";
 }
 .space-wheel{
-    background-image: url("https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/1684496/crowd-clipart-md.png");
+    background-image: url("./assets/images/backgrounds/wheel-space.png");
     background-size: cover;
+    border: 1px solid black;
+    background-color: #c9c9c9;
 }
 .space-event{
     background-size: cover;
+    border: 1px solid black;
 }
 .space-event-liberal-one{
-    background-image: url("https://cdn.britannica.com/35/182635-050-43342CDA/Tennis-Court-Oath-Jacques-Louis-David-Louvre-Paris-1791.jpg");
+    background-image: url("./assets/images/backgrounds/liberal_event_one.webp");
 }
 .space-event-liberal-two{
-    background-image: url("https://cdn.britannica.com/98/90498-050-5527D0C1/prison-event-Bastille-French-Revolution-engraving-July-14-1789.jpg");
+    background-image: url("./assets/images/backgrounds/liberal_event_two.webp");
+}
+.space-event-liberal-three{
+    background-image: url("./assets/images/backgrounds/liberal_event_three.jpg");
+}
+.space-event-liberal-four{
+    background-image: url("./assets/images/backgrounds/liberal_event_four.jpg");
+}
+.space-split{
+    background-image: url("./assets/images/backgrounds/split_space.png");
+    background-size: cover !important;
+    border: 1px solid black;
+}
+.space-event-mountains-one{
+    background-image: url("./assets/images/backgrounds/mountains_event_one.webp");
+}
+.space-event-girondins-one{
+    background-image: url("./assets/images/backgrounds/girondins_event_one.jpg");
+}
+.space-event-mountains-two{
+    background-image: url("./assets/images/backgrounds/mountains_event_two.webp");
+}
+.space-event-girondins-two{
+    background-image: url("./assets/images/backgrounds/girondins_event_two.webp");
+}
+.space-finish{
+    background: green;
+    border: 1px solid black;
+}
+.space-finish::before{
+    color: white;
+    content: "Finish!";
+}
+#dice{
+    width: 5vw;
+    height: 5vw;
+    position: absolute;
+    bottom: 20px;
+    right: 10vw;
+    color: white;
+}
+
+.player{
+    position: absolute;
+    width: 3vw;
+    height: 3vw;
+}
+
+.player-img{
+    max-height: 3vw;
+    max-width: 3vw;
+    border: 3px solid white;
+}
+
+.geography-image{
+    height: 30vh;
+}
+
+.dice-spin{
+    animation: diceSpin 0.5s 1;
+}
+
+@keyframes diceSpin{
+    0% {transform: rotate(0deg)}
+    100% {transform: rotate(1080deg)}
+}
+
+#finish-screen > center > p{
+    background: rgba(254,254,254,0.25);
+}
+
+.message{
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    width: fit-content;
+    z-index: 8;
+}
+
+#guillotine-screen{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100vw;
+    height: 100vh;
+    background: url("./assets/images/backgrounds/guillotine_screen.gif");
+    background-size: 100vw 100vh;
+}
+#guillotine-screen > center{
+    background: rgba(254,254,254,0.6);
+}
+
+.character-img{
+    height: 5vw;
+    padding: 2.5px;
+}
+
+#character-screen{
+    background: url("./assets/images/backgrounds/character-screen.jpg");
+    background-size: cover;
+    height: 100vh;
+}
+#character-selection-img{
+    max-width: 30vw;
+    max-height: 80vh;
+    height: 80vh;
+    object-fit: cover;
+}
+
+#controller-connected-icon{
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    vertical-align: center;
+}
+#controller-disconnected-icon{
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    vertical-align: center;
+}
+
+div.shade{
+    position: absolute;
+    border: 3px solid gray;
+    background: rgba(138,138,138,0.4);
+}
+
+#stats-div{
+    width: fit-content;
+    height: fit-content;
+    position: absolute;
+    left: 15px;
+    bottom: 15px;
 }
