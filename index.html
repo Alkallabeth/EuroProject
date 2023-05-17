@@ -1,99 +1,347 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <!-- SETUP -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- TITLE -->
-    <title>Euro Project</title>
-
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Monarchs & Massacres</title>
+      
     <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon-16x16.png">
-    <link rel="manifest" href="./assets/other/site.webmanifest">
+      
+        <link rel="apple-touch-icon" sizes="180x180" href="/./assets/images/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon/favicon-16x16.png">
+        <link rel="manifest" href="./assets/images/favicon/site.webmanifest">
+      
+    <!-- Bootstrap and FontAwesome -->
+      
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <link rel="stylesheet" href="style.css">
+    </head>
     
-    <!-- BOOTSTRAP CSS & JS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <body>
+        <div id="shadow-screen" class="d-none">
+            <center>
+                <div id="card-task" class="rounded bg-warning p-3 d-none">
+                    <p class="display-3">Complete a task</p>
+                    <hr>
+                </div>
+                <div id="card-event" class="rounded bg-primary p-3 d-none">
+                    <p class="display-3">Complete EventName</p>
+                    <br>
+                </div>
+                <div id="card-pass" class="rounded bg-success p-3 d-none text-white">
+                    <p class="display-3">PlayerName successfully completed the task!</p>
+                    <button class="btn btn-light border rounded w-100" onclick="completeAction()">Ok</button>
+                </div>
+                <div id="card-fail" class="rounded bg-danger p-3 d-none">
+                    <p class="display-3">PlayerName failed the task 🤦</p>
+                    <button class="btn btn-light border rounded w-100" onclick="completeAction()">Ok</button>
+                </div>
+            </center>
+        </div>
+        <div id="start-screen" class="row align-items-center">
+            <div class="col-1"></div>
+            <div class="col">
+                <center>
+                    <!--Welcome screen-->
+                    <p class="display-1 libre-franklin">Welcome to<br>Monarchs & Massacres!</p>
+                    <br>
+                    <p class="h1">Choose the Number of Players:</p>
+                    <div class="row">
+                        <button class="col btn btn-secondary active" id="two-player-btn">2 Players</button>
+                        <button class="col btn btn-secondary" id="four-player-btn">4 Players</button>
+                        <button class="col btn btn-secondary" id="six-player-btn">6 Players</button>
+                    </div>
+                    <br>
+                    <button class="btn btn-danger btn-lg" id="show-rules-btn">Start</button>
+                </center>
+            </div>
+            <div class="col-1"></div>
+        </div>
+        <div id="rules-screen" class="row p-3 d-none">
+            <div class="col">
+                <center>
+                    <!--Introduction of how to play screen-->
+                    <p class="display-2 libre-franklin">How to Play</p>
+                    <hr>
+                    <p class="display-6 libre-franklin">Setup</p>
+                    <p>At the start of the game, players are divided into 2 teams: the Girondins and the Mountains. These teams will work together to hinder the other team.</p>
+                    <p class="display-6 libre-franklin">Objective</p>
+                    <p>The goal of the game is to get to the finish first and to have the most Popularity Points.</p>
+                </center>
+            </div>
+            <div class="col">
+                <center>
+                    <!--Playing mechanics explanation-->
+                    <p class="display-6 libre-franklin">Playing the Game</p>
+                    <p>Each turn, the player will roll a dice and advance the number of spaces shown on the dice. Each space has the following results:</p>
+                    <table id="rules-spaces">
+                        <tr>
+                            <td class="space-popularity-gain"></td>
+                            <td class="w-75" style="font-size: 13px;">Gain 1 Popularity Point.</td>
+                        </tr>
+                        <tr>
+                            <td class="space-popularity-lose"></td>
+                            <td class="w-75" style="font-size: 13px;">Lose 1 Popularity Point. You can't have negative popularity.</td>
+                        </tr>
+                        <tr>
+                            <td class="space-task"></td>
+                            <td class="w-75" style="font-size: 13px;">Complete a task. If you pass, gain popularity. If you fail, lose popularity.</td>
+                        </tr>
+                        <tr>
+                            <td class="space-wheel"></td>
+                            <td class="w-75" style="font-size: 13px;">Award a popularity point to a random player.</td>
+                        </tr>
+                        <tr>
+                            <td class="space-event space-event-liberal-one"></td>
+                            <td class="w-75" style="font-size: 13px;">An event space. If the event is incomplete, players MUST stop on the space and successfully complete 3 tasks to complete the event for everyone. The first player to successfully complete the event gains popularity points. If a player fails the tasks, they will move back 3 spaces and lose popularity.</td>
+                        </tr>
+                    </table>
+                </center>
+            </div>
+            <div class="col">
+                <center>
+                    <!-- Explanation of phases -->
+                    <p class="display-6 libre-franklin">The Liberal Phase</p>
+                    <p>During the first part of the game, all players will work together to complete the events of the Liberal Phase.</p>
+                    <p class="display-6 libre-franklin">The Radical Phase</p>
+                    <p>During the second part, each team will work to stop the other team from reaching the finish. Events in this phase result in the furthest player on other team moving back 3 spaces.</p>
+                    <p class="display-6 libre-franklin">The End</p>
+                    <p>When one player reaches the finish line, that player's team wins! Whichever player on the winning team has the highest score is the overall winner. Score is calculated by subtracting the player's distance from the finish from the player's popularity (popularity - distance).</p>
+                    <br>
+                    <button class="btn btn-success btn-lg" id="start-game-btn">Vive la révolution!<br>(Start Game)</button>
+                </center>
+            </div>
+        </div>
+        <div id="character-screen" class="row text-white p-3 d-none">
+            <div class="col-8" style="border-right: 1px solid gray;">
+                <center>
+                    <p class="display-6" id="currentCharSelectionP">Player 1, Select Your Character!</p>
+                    <hr>
+                    <div id="characters-div"></div>
+                </center>
+            </div>
+            <div class="col">
+                <center>
+                    <p class="display-6" id="character-selection-name">Cecil Rhodes</p>
+                    <img src="" id="character-selection-img">
+                    <button class="btn btn-info text-white w-100" id="character-selection-confirm">Confirm</button>
+                </center>
+            </div>
+        </div>
+        <div id="gameboard-screen" class="d-none">
+            <table id="gameboard">
+                <tr>
+                    <!-- Building of game board and setting of locations -->
+                    <td class="space-start g0 m0"></td>
+                    <td class="space-popularity-gain g1 m1"></td>
+                    <td class="space-task g2 m2"></td>
+                    <td class="space-popularity-gain g3 m3"></td>
+                    <td class="space-wheel g4 m4"></td>
+                    <td class="space-popularity-lose g5 m5"></td>
+                    <td class="space-task g6 m6"></td>
+                    <td class="space-popularity-gain g7 m7"></td>
+                    <td class="space-task g8 m8"></td>
+                    <td class="space-popularity-lose g9 m9"></td>
+                    <td></td>
+                    <td class="space-popularity-gain m73"></td>
+                    <td class="space-popularity-gain m74"></td>
+                    <td class="space-popularity-gain m75"></td>
+                    <td class="space-finish m76 g76"></td>
+                    <td class="space-popularity-gain g75"></td>
+                    <td class="space-popularity-gain g74"></td>
+                    <td class="space-popularity-gain g73"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="space-popularity-gain g10 m10"></td>
+                    <td></td>
+                    <td class="space-task m72"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="space-task g72"></td>
+                </tr>
+                <tr>
+                    <td class="space-popularity-lose g20 m20"></td>
+                    <td class="space-popularity-gain g19 m19"></td>
+                    <td class="space-popularity-lose g18 m18"></td>
+                    <td class="space-task g17 m17"></td>
+                    <td class="space-popularity-gain g16 m16"></td>
+                    <td class="space-wheel g15 m15"></td>
+                    <td class="space-popularity-lose g14 m14"></td>
+                    <td class="space-event space-event-liberal-one g13 m13" data-eventname="The Tennis Court Oath" data-complete="0"></td>
+                    <td class="space-task g12 m12"></td>
+                    <td class="space-popularity-gain g11 m11"></td>
+                    <td></td>
+                    <td class="space-popularity-lose m71"></td>
+                    <td class="space-wheel m70"></td>
+                    <td class="space-popularity-gain m69"></td>
+                    <td></td>
+                    <td class="space-popularity-gain g69"></td>
+                    <td class="space-wheel g70"></td>
+                    <td class="space-popularity-lose g71"></td>
+                </tr>
+                <tr>
+                    <td class="space-task g21 m21"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="space-event space-event-mountains-two m68" data-eventname="Lots of Guillotining" data-complete="0"></td>
+                    <td></td>
+                    <td class="space-event space-event-girondins-two g68" data-eventname="Don't guillotine everybody" data-complete="0"></td>
+                </tr>
+                <tr>
+                    <td class="space-wheel g22 m22"></td>
+                    <td class="space-popularity-gain g23 m23"></td>
+                    <td class="space-task g24 m24"></td>
+                    <td class="space-popularity-lose g25 m25"></td>
+                    <td class="space-event space-event-liberal-two g26 m26" data-eventname="Storming of the Bastille" data-complete="0"></td>
+                    <td class="space-popularity-gain g27 m27"></td>
+                    <td class="space-task g28 m28"></td>
+                    <td class="space-popularity-lose g29 m29"></td>
+                    <td class="space-popularity-lose g30 m30"></td>
+                    <td class="space-wheel g31 m31"></td>
+                    <td></td>
+                    <td class="space-popularity-gain m65"></td>
+                    <td class="space-popularity-gain m66"></td>
+                    <td class="space-task m67"></td>
+                    <td></td>
+                    <td class="space-task g67"></td>
+                    <td class="space-popularity-gain g66"></td>
+                    <td class="space-popularity-gain g65"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="space-popularity-gain g32 m32"></td>
+                    <td></td>
+                    <td class="space-event space-event-mountains-one m64" data-eventname="Committee of Public Safety" data-complete="0"></td>
+                    <td></td>
+                    <!-- hehe  -->
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="space-event space-event-girondins-one g64" data-eventname="Mr. and Mrs. Roland" data-complete="0"></td>
+                </tr>
+                <tr>
+                    <td class="space-popularity-lose g42 m42"></td>
+                    <td class="space-task g41 m41"></td>
+                    <td class="space-popularity-gain g40 m40"></td>
+                    <td class="space-wheel g39 m39"></td>
+                    <td class="space-popularity-lose g38 m38"></td>
+                    <td class="space-task g37 m37"></td>
+                    <td class="space-popularity-gain g36 m36"></td>
+                    <td class="space-popularity-gain g35 m35"></td>
+                    <td class="space-popularity-lose g34 m34"></td>
+                    <td class="space-task g33 m33"></td>
+                    <td></td>
+                    <td class="space-task m63"></td>
+                    <td class="space-popularity-gain m62"></td>
+                    <td class="space-popularity-lose m61"></td>
+                    <td class="space-split g60 m60"></td>
+                    <td class="space-popularity-lose g61"></td>
+                    <td class="space-popularity-gain g62"></td>
+                    <td class="space-task g63"></td>
+                </tr>
+                <tr>
+                    <td class="space-event space-event-liberal-three g43 m43" data-eventname="Women's March on Versailles" data-complete="0"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="space-popularity-gain g59 m59"></td>
+                </tr>
+                <tr>
+                    <td class="space-popularity-gain g44 m44"></td>
+                    <td class="space-popularity-gain g45 m45"></td>
+                    <td class="space-popularity-lose g46 m46"></td>
+                    <td class="space-task g47 m47"></td>
+                    <td class="space-task g48 m48"></td>
+                    <td class="space-popularity-gain g49 m49"></td>
+                    <td class="space-wheel g50 m50"></td>
+                    <td class="space-popularity-lose g51 m51"></td>
+                    <td class="space-task g52 m52"></td>
+                    <td class="space-popularity-lose g53 m53"></td>
+                    <td class="space-popularity-gain g54 m54"></td>
+                    <td class="space-popularity-gain g55 m55"></td>
+                    <td class="space-task g56 m56"></td>
+                    <td class="space-wheel g57 m57"></td>
+                    <td class="space-event space-event-liberal-four g58 m58" data-eventname="Execution of Louis XVI" data-complete="0"></td>
+                </tr>
+            </table>
+            <button id="dice" class="btn btn-dark rounded">1</button>
+        </div>
+        <div id="finish-screen" class="d-none">
+            <center>
+                <p class="display-2" id="finish-message">PlayerName won!</p>
+                <p class="display-6">But it doesn't matter who won, because you all lose to Napoleon, the new Emperor of France!</p>
+                <img src="./assets/images/backgrounds/napoleon-finish.gif">
+                <div id="stats-div" class="container bg-white rounded p-3">
+                    <center>
+                        <p class="h3"><u>Stats</u></p>
+                        <p id="stats-p">
+                            Name, Popularity, Score
+                        </p>
+                    </center>
+                </div>
+            </center>
+        </div>
+        <div id="guillotine-screen" class="p-3 d-none">
+            <center class="p-3">
+                <p class="display-1" id="guillotine-message">PlayerName was too unpopular and was executed!</p>
+                <button class="btn btn-danger btn-lg w-75" onclick="completeAction()">Ok</button>
+            </center>
+        </div>
+        <div id="controller-connected-icon" class="bg-success text-white rounded p-1 d-none">
+            <i class="fa-solid fa-gamepad"></i>
+            <i class="fa-solid fa-check"></i>
+        </div>
+        <div id="controller-disconnected-icon" class="bg-danger text-white rounded p-1 d-none">
+            <i class="fa-solid fa-gamepad"></i>
+            <i class="fa-solid fa-x"></i>
+        </div>
+    </body>
     
-    <!-- Main CSS and JS files -->
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="script.js">
-  </head>
-  
-  <body>
-    <div id="start-screen" class="row align-items-center">
-      <div class="col"></div>
-      <div class="col">
-        <center>
-          <p class="display-1 libre-franklin">Welcome to ProjectName!</p>
-          <br>
-          <p class="h1">Choose the Number of Players:</p>
-           <div class="row">
-            <button class="col btn btn-secondary" id="two-player-btn">2 Players</button>
-            <button class="col btn btn-secondary active" id="four-player-btn">4 Players</button>
-            <button class="col btn btn-secondary" id="six-player-btn">6 Players</button>
-           </div>
-           <br>
-           <button class="btn btn-danger btn-lg" id="start-game-btn">Start</button>
-        </center>
-      </div>
-      <div class="col"></div>
-    </div>
-    <div id="rules-screen" class="row p-3 d-none">
-      <div class="col">
-        <center>
-          <p class="display-2 libre-franklin">How to Play</p>
-          <hr>
-          <p class="display-6 libre-franklin">Setup</p>
-          <p>At the start of the game, players are divided into 2 teams: the Girondins and the Mountains. Each player represents a historical figure from that political party.</p>
-          <p class="display-6 libre-franklin">Objective</p>
-          <p>The goal of the game is to get your team to the finish line first and to have the most popularity points.</p>
-        </center>
-      </div>
-      <div class="col">
-        <center>
-          <p class="display-6 libre-franklin">Playing the Game</p>
-          <p>Each turn, the player will roll a dice and advance the number of spaces shown on the dice. Each space has the following results:</p>
-          <table>
-            <tr>
-              <td class="space-popularity-gain"></td>
-              <td class="w-75">Gain 1 Popularity Point</td>
-            </tr>
-            <tr>
-              <td class="space-popularity-lose"></td>
-              <td class="w-75">Lose 1 Popularity Point</td>
-            </tr>
-            <tr>
-              <td class="space-task"></td>
-              <td class="w-75">Complete a task. If you pass, gain popularity. If you fail, lose popularity.</td>
-            </tr>
-            <tr>
-              <td class="space-wheel"></td>
-              <td class="w-75">Award popularity point(s) to a random player</td>
-            </tr>
-            <tr>
-              <td class="space-event space-event-liberal-one"></td>
-              <td class="w-75">An event space. If the event is incomplete, players MUST stop on the space and successfully complete 3 tasks to complete the event for everyone. The first player to successfully complete the event gains popularity points. If a player fails the tasks, they will move back 3 spaces.</td>
-            </tr>
-          </table>
-        </center>
-      </div>
-      <div class="col">
-        <center>
-          <p class="display-6 libre-franklin">The Liberal Phase</p>
-          <p>During the first part of the game, all players will work together to complete the events of the Liberal Phase.</p>
-          <p class="display-6 libre-franklin">The Radical Phase</p>
-          <p>During the second part, each team will work to stop the other team from reaching the finish.</p>
-          <p class="display-6 libre-franklin">The End</p>
-          <p>When one player reaches the finish line, that player's team wins! Whichever player on the winning team has the most popularity points is the overall winner.</p>
-          <br>
-          <button class="btn btn-success btn-lg" id="start-game-btn">Vive la révolution!<br>(Start Game)</button>
-        </center>
-      </div>
-    </div>
-  </body>
-
+    <script src="characters.js"></script>
+    <script src="tasks.js"></script>
+    <script src="script.js"></script>
 </html>
