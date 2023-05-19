@@ -2,6 +2,7 @@
 ### FOR MR. HENRY
 * You can play the game at [https://alkallabeth.github.io/Monarchs-and-Massacres/](https://alkallabeth.github.io/Monarchs-and-Massacres/)
 * You can view all files (images, audio, etc.) in the assets folder
+***
 ### Basics
 * Our AP European History board game project, due Wednesday May 24th
 * The theme is the French Revolution (1789 - 1799)
