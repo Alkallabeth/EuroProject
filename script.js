@@ -361,7 +361,7 @@ class Player{
                 biggests.forEach(function(b){
                     fm.innerHTML += `${b.name} and `;
                 });
-                fm.innerHTML = fm.innerHTML.substring(0,fm.innerHTML.length - 4) + "!";
+                fm.innerHTML = fm.innerHTML.substring(0,fm.innerHTML.length - 5) + "!";
             }
             document.getElementById("finish-screen").show();
             const sP = document.getElementById("stats-p");
