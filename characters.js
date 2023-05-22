@@ -1,3 +1,11 @@
+/*
+
+This file handles everything to do with character selection
+
+*/
+
+// All the characters
+
 const allCharactersList = [
   "Adolf Hitler.webp",
   "Albert Camus.jpg",
@@ -92,6 +100,7 @@ const allCharactersList = [
   "Victor Emmanuel II.jpg",
   "Vlad The Impaler.jpeg",
   "Vladimir Putin.jpg",
+  "Vladolf Putler.jpeg",
   "Voltaire.jpeg",
   "Wide Putin.jpg",
   "Wilhelm I.jpg",
@@ -103,10 +112,14 @@ const allCharactersList = [
 
 let locked = false;
 
+// Creates a dictionary of all the characters and their image files
+
 let allCharactersObject = {};
 allCharactersList.forEach(function(path){
     allCharactersObject[path] = "./assets/images/characters/" + path;
 });
+
+// Creates all the character images for the character selection screen
 
 function setupCharacters(){
     allCharactersList.forEach(function(char){
@@ -115,12 +128,18 @@ function setupCharacters(){
         img.src = allCharactersObject[char];
         img.title = char.split(".")[0].replaceAll("_"," ");
         document.getElementById("characters-div").appendChild(img);
+        
+        // Changes big image when user hovers over a character
+        
         img.addEventListener("mouseover",function(){
             if(!locked){
                 document.getElementById("character-selection-name").innerHTML = this.title;
                 document.getElementById("character-selection-img").src = this.src;
             }
         });
+        
+        // Plays audio file and changes big image when user clicks on a character
+        
         img.addEventListener("click",function(){
             playSound(this.title+".wav");
             document.getElementById("character-selection-name").innerHTML = this.title;
@@ -130,6 +149,9 @@ function setupCharacters(){
     });
 }
 setupCharacters();
+
+// Handles character confirmation and creates a new player
+
 document.getElementById("character-selection-confirm").addEventListener("click",function(){
     let name = document.getElementById("character-selection-name").innerHTML;
     let img = document.getElementById("character-selection-img").src;
