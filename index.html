@@ -21,6 +21,9 @@
     </head>
     
     <body>
+        
+        <!-- Message screen, used to prevent other actions during tasks/quizzes -->
+        
         <div id="shadow-screen" class="d-none">
             <center>
                 <div id="card-task" class="rounded bg-warning p-3 d-none">
@@ -33,33 +36,38 @@
                 </div>
                 <div id="card-pass" class="rounded bg-success p-3 d-none text-white">
                     <p class="display-3">PlayerName successfully completed the task!</p>
-                    <button class="btn btn-light border rounded w-100" onclick="completeAction()">Ok</button>
+                    <button class="btn btn-light border rounded w-100" onclick="completeAction()">Ok&emsp;<span class="controller-controls a"></span></button>
                 </div>
                 <div id="card-fail" class="rounded bg-danger p-3 d-none">
                     <p class="display-3">PlayerName failed the task 🤦</p>
-                    <button class="btn btn-light border rounded w-100" onclick="completeAction()">Ok</button>
+                    <button class="btn btn-light border rounded w-100" onclick="completeAction()">Ok&emsp;<span class="controller-controls a"></span></button>
                 </div>
             </center>
         </div>
+        
+        <!-- Welcome screen & number of players selection -->
+        
         <div id="start-screen" class="row align-items-center">
             <div class="col-1"></div>
             <div class="col">
                 <center>
-                    <!--Welcome screen-->
                     <p class="display-1 libre-franklin">Welcome to<br>Monarchs & Massacres!</p>
                     <br>
                     <p class="h1">Choose the Number of Players:</p>
                     <div class="row">
-                        <button class="col btn btn-secondary active" id="two-player-btn">2 Players</button>
-                        <button class="col btn btn-secondary" id="four-player-btn">4 Players</button>
-                        <button class="col btn btn-secondary" id="six-player-btn">6 Players</button>
+                        <button class="col btn btn-secondary active" id="two-player-btn">2 Players&emsp;<span class="controller-controls x"></span></button>
+                        <button class="col btn btn-secondary" id="four-player-btn">4 Players&emsp;<span class="controller-controls y"></span></button>
+                        <button class="col btn btn-secondary" id="six-player-btn">6 Players&emsp;<span class="controller-controls b"></span></button>
                     </div>
                     <br>
-                    <button class="btn btn-danger btn-lg" id="show-rules-btn">Start</button>
+                    <button class="btn btn-danger btn-lg" id="show-rules-btn">Start&emsp;<span class="controller-controls a"></span></button>
                 </center>
             </div>
             <div class="col-1"></div>
         </div>
+        
+        <!-- Rules screen -->
+        
         <div id="rules-screen" class="row p-3 d-none">
             <div class="col">
                 <center>
@@ -70,6 +78,8 @@
                     <p>At the start of the game, players are divided into 2 teams: the Girondins and the Mountains. These teams will work together to hinder the other team.</p>
                     <p class="display-6 libre-franklin">Objective</p>
                     <p>The goal of the game is to get to the finish first and to have the most Popularity Points.</p>
+                    <br>
+                    <button class="btn btn-success btn-lg" id="start-game-btn">Vive la révolution!<br>(Start Game)&emsp;<span class="controller-controls a"></span></button>
                 </center>
             </div>
             <div class="col">
@@ -105,20 +115,21 @@
                 <center>
                     <!-- Explanation of phases -->
                     <p class="display-6 libre-franklin">The Liberal Phase</p>
-                    <p>During the first part of the game, all players will work together to complete the events of the Liberal Phase.</p>
+                    <p>During the first part of the game, all players will work to complete the events of the Liberal Phase and to gain popularity.</p>
                     <p class="display-6 libre-franklin">The Radical Phase</p>
-                    <p>During the second part, each team will work to stop the other team from reaching the finish. Events in this phase result in the furthest player on other team moving back 3 spaces.</p>
+                    <p>During the second part, each team will work to stop the other team from reaching the finish by completing tasks. Events in this phase result in the furthest player on the other team moving back 3 spaces. However, if any player has less than 5 popularity once one player has reached this phase, they will be guillotined and will be out of the game.</p>
                     <p class="display-6 libre-franklin">The End</p>
                     <p>When one player reaches the finish line, that player's team wins! Whichever player on the winning team has the highest score is the overall winner. Score is calculated by subtracting the player's distance from the finish from the player's popularity (popularity - distance).</p>
-                    <br>
-                    <button class="btn btn-success btn-lg" id="start-game-btn">Vive la révolution!<br>(Start Game)</button>
                 </center>
             </div>
         </div>
+        
+        <!-- Character selection screen -->
+        
         <div id="character-screen" class="row text-white p-3 d-none">
             <div class="col-8" style="border-right: 1px solid gray;">
                 <center>
-                    <p class="display-6" id="currentCharSelectionP">Player 1, Select Your Character!</p>
+                    <p class="display-6" id="currentCharSelectionP">Player 1, Select Your Character!&emsp;<span class="controller-controls a"></span></p>
                     <hr>
                     <div id="characters-div"></div>
                 </center>
@@ -127,14 +138,19 @@
                 <center>
                     <p class="display-6" id="character-selection-name">Cecil Rhodes</p>
                     <img src="" id="character-selection-img">
-                    <button class="btn btn-info text-white w-100" id="character-selection-confirm">Confirm</button>
+                    <button class="btn btn-info text-white w-100" id="character-selection-confirm">Confirm&emsp;<span class="controller-controls x"></span></button>
                 </center>
             </div>
         </div>
+        
+        <!-- Main game screen -->
+        
         <div id="gameboard-screen" class="d-none">
+            
+            <!-- Gameboard is a table. The classes define what type of space it is and what order it is for each team. -->
+            
             <table id="gameboard">
                 <tr>
-                    <!-- Building of game board and setting of locations -->
                     <td class="space-start g0 m0"></td>
                     <td class="space-popularity-gain g1 m1"></td>
                     <td class="space-task g2 m2"></td>
@@ -186,13 +202,13 @@
                     <td class="space-task g12 m12"></td>
                     <td class="space-popularity-gain g11 m11"></td>
                     <td></td>
-                    <td class="space-popularity-lose m71"></td>
+                    <td class="space-event space-event-mountains-two m71" data-eventname="Lots of Guillotining" data-complete="0"></td>
                     <td class="space-wheel m70"></td>
                     <td class="space-popularity-gain m69"></td>
                     <td></td>
                     <td class="space-popularity-gain g69"></td>
                     <td class="space-wheel g70"></td>
-                    <td class="space-popularity-lose g71"></td>
+                    <td class="space-event space-event-girondins-two g71" data-eventname="Don't guillotine everybody" data-complete="0"></td>
                 </tr>
                 <tr>
                     <td class="space-task g21 m21"></td>
@@ -208,9 +224,9 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td class="space-event space-event-mountains-two m68" data-eventname="Lots of Guillotining" data-complete="0"></td>
+                    <td class="space-popularity-lose m68"></td>
                     <td></td>
-                    <td class="space-event space-event-girondins-two g68" data-eventname="Don't guillotine everybody" data-complete="0"></td>
+                    <td class="space-popularity-lose g68"></td>
                 </tr>
                 <tr>
                     <td class="space-wheel g22 m22"></td>
@@ -308,8 +324,14 @@
                     <td class="space-event space-event-liberal-four g58 m58" data-eventname="Execution of Louis XVI" data-complete="0"></td>
                 </tr>
             </table>
-            <button id="dice" class="btn btn-dark rounded">1</button>
+            
+            <!-- The dice -->
+            
+            <button id="dice" class="btn btn-dark rounded">RT: 1</button>
         </div>
+        
+        <!-- The finish screen -->
+        
         <div id="finish-screen" class="d-none">
             <center>
                 <p class="display-2" id="finish-message">PlayerName won!</p>
@@ -325,12 +347,18 @@
                 </div>
             </center>
         </div>
+        
+        <!-- The guillotine screen (credit to Cam for finding the excellent gif) -->
+        
         <div id="guillotine-screen" class="p-3 d-none">
             <center class="p-3">
                 <p class="display-1" id="guillotine-message">PlayerName was too unpopular and was executed!</p>
-                <button class="btn btn-danger btn-lg w-75" onclick="completeAction()">Ok</button>
+                <button class="btn btn-danger btn-lg w-75" onclick="completeAction()">Ok&emsp;<span class="controller-controls a"></span></button>
             </center>
         </div>
+        
+        <!-- The little icons in the bottom right corner that pop up when a controller is connected/disconnected -->
+        
         <div id="controller-connected-icon" class="bg-success text-white rounded p-1 d-none">
             <i class="fa-solid fa-gamepad"></i>
             <i class="fa-solid fa-check"></i>
@@ -339,8 +367,13 @@
             <i class="fa-solid fa-gamepad"></i>
             <i class="fa-solid fa-x"></i>
         </div>
+        
+        <!-- The mouse on the character selection screen -->
+        
+        <div id="mouse" class="controller-controls d-none"></div>
     </body>
     
+    <script src="gamepad.js"></script>
     <script src="characters.js"></script>
     <script src="tasks.js"></script>
     <script src="script.js"></script>
