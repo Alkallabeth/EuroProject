@@ -1,3 +1,11 @@
+/*
+
+This file handles everything to do with how everything looks
+
+*/
+
+
+/* Imports the main font used for titles */
 @import url('https://fonts.googleapis.com/css2?family=Libre+Franklin&display=swap');
 
 body{
@@ -6,6 +14,8 @@ body{
 .libre-franklin{
     font-family: Libre Franklin;
 }
+
+/* Styles the different screens (start, rules, character selection, game, finish, execution, shadow */
 #start-screen{
     height: 100vh;
     width: 100vw;
@@ -54,11 +64,26 @@ body{
     max-height: 80vh;
     overflow: scroll;
 }
+#guillotine-screen{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100vw;
+    height: 100vh;
+    background: url("./assets/images/backgrounds/guillotine_screen.gif");
+    background-size: 100vw 100vh;
+    z-index: 100000000;
+}
+#guillotine-screen > center{
+    background: rgba(254,254,254,0.6);
+}
 #finish-screen{
     background: url("./assets/images/backgrounds/finish-screen.jpeg");
     background-size: cover;
     height: 100vh;
 }
+
+/* Styles the gameboard spaces */
 td{
     height: 5vw;
     width: 5vw;
@@ -140,6 +165,9 @@ td{
     color: white;
     content: "Finish!";
 }
+
+/* Styles the dice */
+
 #dice{
     width: 5vw;
     height: 5vw;
@@ -148,6 +176,8 @@ td{
     right: 10vw;
     color: white;
 }
+
+/* Styles the player */
 
 .player{
     position: absolute;
@@ -161,9 +191,13 @@ td{
     border: 3px solid white;
 }
 
+/* Styles the geography task image */
+
 .geography-image{
     height: 30vh;
 }
+
+/* Dice roll animation */
 
 .dice-spin{
     animation: diceSpin 0.5s 1;
@@ -183,24 +217,14 @@ td{
     left: 20px;
     bottom: 20px;
     width: fit-content;
+    height: fit-content !important;
     z-index: 8;
 }
 
-#guillotine-screen{
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    width: 100vw;
-    height: 100vh;
-    background: url("./assets/images/backgrounds/guillotine_screen.gif");
-    background-size: 100vw 100vh;
-}
-#guillotine-screen > center{
-    background: rgba(254,254,254,0.6);
-}
+
 
 .character-img{
-    height: 5vw;
+    height: 4.75vw;
     padding: 2.5px;
 }
 
@@ -241,4 +265,65 @@ div.shade{
     position: absolute;
     left: 15px;
     bottom: 15px;
+}
+
+.x::before{
+    content: "\24CD";
+    font-weight: bold;
+}
+.y::before{
+    content: "\24CE";
+    font-weight: bold;
+}
+.a::before{
+    content: "\24B6";
+    font-weight: bold;
+}
+.b::before{
+    content: "\24B7";
+    font-weight: bold;
+}
+
+#mouse{
+    background-image: url("./assets/images/backgrounds/mouse.png");
+    background-size: cover;
+    width: 32px;
+    height: 48px;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    z-index: 1000;
+}
+
+.dpad-left{
+    background-image: url("./assets/images/backgrounds/dpad-left.png");
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+}
+.dpad-right{
+    background-image: url("./assets/images/backgrounds/dpad-right.png");
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+}
+.dpad-top{
+    background-image: url("./assets/images/backgrounds/dpad-top.png");
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+}
+.dpad-bottom{
+    background-image: url("./assets/images/backgrounds/dpad-bottom.png");
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+}
+
+.player-mountain{
+    border: 3px solid red;
+}
+
+.player-girondin{
+    border: 3px solid cyan;
 }
