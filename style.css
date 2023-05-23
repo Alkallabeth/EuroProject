@@ -343,3 +343,7 @@ div.shade{
 .player-girondin{
     border: 3px solid cyan;
 }
+
+.current-player{
+    border: 3px solid yellow !important;
+}
