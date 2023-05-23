@@ -132,6 +132,14 @@ function setCharacter(name,img){
                 shades[i].remove();
             }
             audio.pause();
+            document.getElementById("current-player-p").innerHTML = `It's ${players[0].name}'s turn`;
+            players[0].img.classList.add("current-player");
+            let sP = document.getElementById("score-popularity-p");
+            sP.innerHTML = "";
+            for(let p in players){
+                let cp = players[p];
+                sP.innerHTML += `${cp.name}: ${cp.popularity}<br>`;
+            }
         }
     }
 }
@@ -264,7 +272,7 @@ class Player{
         if(this.space > 58){
             radical = true;
         }
-        if(radical && (this.popularity < 7)){
+        if(radical && (this.popularity < 5)){
             document.getElementById("guillotine-screen").show();
             document.getElementById("guillotine-message").innerHTML = `${this.name} was too unpopular and was executed!`;
             this.div.remove();
@@ -421,6 +429,19 @@ class Player{
         shadowScreen.hide();
         shadowScreen.style.zIndex = "0";
         this.div.style.zIndex = "5";
+        document.getElementById("current-player-p").innerHTML = `It's ${players[currentTurn].name}'s turn`;
+        let sP = document.getElementById("score-popularity-p");
+        sP.innerHTML = "";
+        let lowest = 76;
+        for(let p in players){
+            let cp = players[p];
+            sP.innerHTML += `${cp.name}: ${cp.popularity}<br>`;
+            if(cp.space < lowest){
+                lowest = cp.space;
+            }
+        }
+        this.img.classList.remove("current-player");
+        players[currentTurn].img.classList.add("current-player");
         document.getElementById("dice").disabled = false;
     }
     finishQuiz(pass){
