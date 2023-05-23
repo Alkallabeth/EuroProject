@@ -168,12 +168,28 @@ td{
 
 /* Styles the dice */
 
+#dice-div{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+#scoreboard{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background: rgba(254,254,254,0.75);
+    height: fit-content !important;
+    width: fit-content !important;
+}
+
+#dice-div > center > p{
+    background: rgba(254,254,254,0.5) !important;
+}
+
 #dice{
     width: 5vw;
     height: 5vw;
-    position: absolute;
-    bottom: 20px;
-    right: 10vw;
     color: white;
 }
 
