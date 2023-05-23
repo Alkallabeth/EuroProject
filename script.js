@@ -27,7 +27,7 @@ for(let i=0;i<cs.length;i++){
 const audio = new Audio();
 function playSound(url){
     audio.pause();
-    const fullLink = "./assets/audio/" + url.replaceAll(" ","%20");
+    const fullLink = "./assets/audio/" + url;
     audio.src = fullLink;
     audio.load();
     audio.play();
@@ -111,8 +111,12 @@ function setCharacter(name,img){
         }
         players.push(new Player(name,t,img));
         characterSelectionCompleted++;
+        let addC = "&emsp;";
+        if(gamepadConnected){
+            addC += `<span class="a"></span>`;
+        }
         if(characterSelectionCompleted < numberOfPlayers){
-            document.getElementById("currentCharSelectionP").innerHTML = `Player ${characterSelectionCompleted + 1}, Select Your Character!&emsp;<span class="a"></span>`;
+            document.getElementById("currentCharSelectionP").innerHTML = `Player ${characterSelectionCompleted + 1}, Select Your Character!${addC}`;
         } else {
             document.getElementById("character-screen").hide();
             document.getElementById("gameboard-screen").show();
@@ -361,7 +365,7 @@ class Player{
                 biggests.forEach(function(b){
                     fm.innerHTML += `${b.name} and `;
                 });
-                fm.innerHTML = fm.innerHTML.substring(0,fm.innerHTML.length - 5) + "!";
+                fm.innerHTML = fm.innerHTML.substring(0,fm.innerHTML.length - 4) + "!";
             }
             document.getElementById("finish-screen").show();
             const sP = document.getElementById("stats-p");
