@@ -131,8 +131,7 @@ let gamepadConnected = false;
 // Handles control changes and notifies user when a controller is connected or disconnected
 
 window.addEventListener("gamepadconnected",function(){
-    document.getElementById("controller-disconnected-icon").hide();
-    document.getElementById("controller-connected-icon").show();
+    popup("success","Controller Connected!");
     let cs = document.querySelectorAll(".controller-controls");
     for(let i=0;i<cs.length;i++){
         if(cs[i] != Mouse.element){
@@ -142,8 +141,7 @@ window.addEventListener("gamepadconnected",function(){
     gamepadConnected = true;
 });
 window.addEventListener("gamepaddisconnected",function(){
-    document.getElementById("controller-disconnected-icon").show();
-    document.getElementById("controller-connected-icon").hide();
+    popup("danger","Controller Disconnected");
     if(!navigator.getGamepads()[0]){
         let cs = document.querySelectorAll(".controller-controls");
         for(let i=0;i<cs.length;i++){
