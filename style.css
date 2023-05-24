@@ -172,6 +172,7 @@ td{
     position: absolute;
     bottom: 10px;
     right: 10px;
+    z-index: 3;
 }
 
 #scoreboard{
@@ -261,12 +262,14 @@ td{
     right: 20px;
     bottom: 20px;
     vertical-align: center;
+    z-index: 2;
 }
 #controller-disconnected-icon{
     position: absolute;
     right: 20px;
     bottom: 20px;
     vertical-align: center;
+    z-index: 2;
 }
 
 div.shade{
