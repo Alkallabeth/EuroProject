@@ -272,7 +272,7 @@ class Player{
         if(this.space > 58){
             radical = true;
         }
-        if(radical && (this.popularity < 5)){
+        if(radical && (this.popularity < 10)){
             document.getElementById("guillotine-screen").show();
             document.getElementById("guillotine-message").innerHTML = `${this.name} was too unpopular and was executed!`;
             this.div.remove();
